@@ -19,3 +19,5 @@ pipeline {
                 sh "mvn ${params.MAVEN_GOAL}"
             }
         }
+    }
+}        

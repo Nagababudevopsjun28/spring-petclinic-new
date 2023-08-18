@@ -21,22 +21,15 @@ pipeline {
         }
         stage('sonar analysis') {
               steps {
-                //performing sonarqube analysis with "withSonarQubeENV(<Name of server configure)"
                 withSonarQubeEnv('SONAR_CLOUD') {
-                    //requires SonarQube Scanner for Maven 3.2+  
-                    //sh 'mvn clean package sonar:sonar' -Dsonar.organization=demo'
+                    sh  'mvn clean package sonar:sonar'
                 }
-            }  
-        }  
-        stage('post build') {
-           steps {
-               archiveArtifacts artifacts: '**/target/spring-petclinic-3.1.0-SNAPSHOT.jar',
-                                 onlyIfsuccessful: true
-               junit testResults: '**/surefire-reports/TEST-*.xml' 
-           }
+           }        
         }
     }
-}           
+}                        
+        
+               
 
            
 

@@ -24,10 +24,14 @@ pipeline {
                 withSonarQubeEnv('SONAR_CLOUD') {
                     sh  'mvn clean package sonar:sonar'
                 }
-           }        
+            }
         }
     }
-}                        
+}       
+    
+                    
+                     
+                                  
         
                
 

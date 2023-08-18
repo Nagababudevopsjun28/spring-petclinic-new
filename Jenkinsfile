@@ -19,32 +19,3 @@ pipeline {
                 sh "mvn ${params.MAVEN_GOAL}"
             }
         }
-        stage('sonar analysis') {
-              steps {
-                  withSonarQubeEnv('SONAR_CLOUD') {
-                       sh 'mvn clean package sonar:sonar'
-                       }
-                    }
-                }
-        }
-    }
-
- 
- 
- 
-    
-            
-        
-    
-                                
-
-                    
-               
-                      
-
-                    
-        
-    
-
- 
- 

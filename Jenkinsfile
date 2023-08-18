@@ -11,13 +11,14 @@ pipeline {
                     branch: 'main'
             }
         }
-        stage('package') {
-            tools {
-                jdk 'JDK_17'
-            }
-            steps {
-                sh "mvn ${params.MAVEN_GOAL}"
-            }
+            stage('package') {
+                tools {
+                     jdk 'JDK_17'
+                }
+                steps {
+                    sh "mvn ${params.MAVEN_GOAL}"
+                }
+            }    
             stage('sonar analysis') {
                   steps {
                     // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"

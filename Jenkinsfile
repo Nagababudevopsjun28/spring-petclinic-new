@@ -23,11 +23,26 @@ pipeline {
               steps {
                   withSonarQubeEnv('SONAR_CLOUD') {
                        sh 'mvn clean package sonar:sonar'
-                       }
-                    }
-                }
+                    } 
+                }    
+        }
+        stage('post build') {
+            steps {
+                archiveArtifacts artifacts: '**/target/spring-petclinic-3.1.0-SNAPSHOT.jar',
+                                 OnlyIfSuccessful: true
+                junit  testResults: '**/surefire-reports/TEST-*.xml'
+            }
         }
     }
+}                                 
+
+                    
+               
+                      
+
+                    
+        
+    
 
  
  

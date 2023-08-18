@@ -18,6 +18,15 @@ pipeline {
             steps {
                 sh "mvn ${params.MAVEN_GOAL}"
             }
+            stage('sonar analysis') {
+                  steps {
+                    // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
+                    withSonarQubeEnv('SONAR_CLOUD') {
+                        // requires SonarQube Scanner for Maven 3.2+ 
+                        // sh 'mvn clean package sonar:sonar -Dsonar.organization=siva_key'
+                    }    
+                }
+            }
         }
-    }
-}        
+        
+       

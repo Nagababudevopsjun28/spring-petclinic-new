@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/Nagababudevopsjun28/spring-petclinic-new.git',
+                git url: 'https://github.com/Nagababudevopsjun28/spring-petclinic.git',
                     branch: 'main'
             }
         }
@@ -21,27 +21,12 @@ pipeline {
         }
         stage('sonar analysis') {
               steps {
-                withSonarQubeEnv('SONAR_CLOUD') {
-                    sh  'mvn clean package sonar:sonar'
+                  withSonarQubeEnv('SONAR_CLOUD') {
+                       sh 'mvn clean package sonar:sonar'
+                       }
+                    }
                 }
-            }
         }
     }
-}       
-    
-                    
-                     
-                                  
-        
-               
-
-           
-
-
-
-                
-                
-        
-
 
  
